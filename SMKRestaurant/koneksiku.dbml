@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="smknus" Class="koneksikuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CORAZON\SQLEXPRESS;Initial Catalog=smknus;Integrated Security=True" SettingsObjectName="SMKRestaurant.Properties.Settings" SettingsPropertyName="smknusConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.detailorder" Member="detailorders">
+    <Type Name="detailorder">
+      <Column Name="detailid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="orderid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="menuid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="qty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="headorder_detailorder" Member="headorder" ThisKey="orderid" OtherKey="orderid" Type="headorder" IsForeignKey="true" />
+      <Association Name="msmenu_detailorder" Member="msmenu" ThisKey="menuid" OtherKey="menuid" Type="msmenu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.headorder" Member="headorders">
+    <Type Name="headorder">
+      <Column Name="orderid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="employeeid" Type="System.String" DbType="NVarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="memberid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="payment" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bank" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="headorder_detailorder" Member="detailorders" ThisKey="orderid" OtherKey="orderid" Type="detailorder" />
+      <Association Name="msemployee_headorder" Member="msemployee" ThisKey="employeeid" OtherKey="employeeid" Type="msemployee" IsForeignKey="true" />
+      <Association Name="msmember_headorder" Member="msmember" ThisKey="memberid" OtherKey="memberid" Type="msmember" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.msemployee" Member="msemployees">
+    <Type Name="msemployee">
+      <Column Name="employeeid" Type="System.String" DbType="NVarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="handphone" Type="System.String" DbType="NVarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="position" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="msemployee_headorder" Member="headorders" ThisKey="employeeid" OtherKey="employeeid" Type="headorder" />
+    </Type>
+  </Table>
+  <Table Name="dbo.msmember" Member="msmembers">
+    <Type Name="msmember">
+      <Column Name="memberid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="handphone" Type="System.String" DbType="NVarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="joindate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Association Name="msmember_headorder" Member="headorders" ThisKey="memberid" OtherKey="memberid" Type="headorder" />
+    </Type>
+  </Table>
+  <Table Name="dbo.msmenu" Member="msmenus">
+    <Type Name="msmenu">
+      <Column Name="menuid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="photo" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="path" Type="System.String" DbType="VarChar(150)" CanBeNull="false" />
+      <Association Name="msmenu_detailorder" Member="detailorders" ThisKey="menuid" OtherKey="menuid" Type="detailorder" />
+    </Type>
+  </Table>
+</Database>

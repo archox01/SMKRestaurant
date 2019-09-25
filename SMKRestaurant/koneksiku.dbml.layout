@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="koneksiku">
+  <DataContextMoniker Name="/koneksikuDataContext" />
+  <nestedChildShapes>
+    <classShape Id="55def585-b253-491c-b4d9-1930407b1174" absoluteBounds="7.5, 1.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/koneksikuDataContext/detailorder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12d530c7-a8a8-4df6-8c06-3930c5a60f4d" absoluteBounds="7.515, 1.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dcf2489e-6cd7-4a3c-b22b-23463e15f59c" absoluteBounds="3.5, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/koneksikuDataContext/headorder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4b8360a-84d7-441f-ba95-2f559985bff8" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bb863940-2d86-475e-b865-9f8967f696e3" absoluteBounds="0.75, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/koneksikuDataContext/msemployee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="698a158f-d341-401e-a8df-30d001257a3a" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6ca7a3b9-45c4-474b-96ef-e3ae8cf68e38" absoluteBounds="0.75, 3.875, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/koneksikuDataContext/msmember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c9632d27-2b8f-40b7-80ef-25aa5fa1f6c3" absoluteBounds="0.765, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 2.16909912109375); (7.5 : 2.16909912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/koneksikuDataContext/headorder/headorder_detailorder" />
+      <nodes>
+        <classShapeMoniker Id="dcf2489e-6cd7-4a3c-b22b-23463e15f59c" />
+        <classShapeMoniker Id="55def585-b253-491c-b4d9-1930407b1174" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.85659912109375); (3.5 : 1.85659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/koneksikuDataContext/msemployee/msemployee_headorder" />
+      <nodes>
+        <classShapeMoniker Id="bb863940-2d86-475e-b865-9f8967f696e3" />
+        <classShapeMoniker Id="dcf2489e-6cd7-4a3c-b22b-23463e15f59c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.85659912109375); (4.5 : 4.85659912109375); (4.5 : 2.8381982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/koneksikuDataContext/msmember/msmember_headorder" />
+      <nodes>
+        <classShapeMoniker Id="6ca7a3b9-45c4-474b-96ef-e3ae8cf68e38" />
+        <classShapeMoniker Id="dcf2489e-6cd7-4a3c-b22b-23463e15f59c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8c3b4180-9506-4a4e-9ce9-88a99f8b746b" absoluteBounds="7.5, 4.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/koneksikuDataContext/msmenu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ed5447ca-56fc-46c1-8619-96c8bf50f398" absoluteBounds="7.515, 5.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.5 : 4.97790639865634); (7.25 : 4.97790639865634); (7.25 : 4.5); (8.5 : 4.5); (8.5 : 3.4631982421875)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Algorithm">
+      <AssociationMoniker Name="/koneksikuDataContext/msmenu/msmenu_detailorder" />
+      <nodes>
+        <classShapeMoniker Id="8c3b4180-9506-4a4e-9ce9-88a99f8b746b" />
+        <classShapeMoniker Id="55def585-b253-491c-b4d9-1930407b1174" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
