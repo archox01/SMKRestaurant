@@ -77,7 +77,7 @@
             // btnlogin
             // 
             this.btnlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnlogin.Location = new System.Drawing.Point(339, 249);
+            this.btnlogin.Location = new System.Drawing.Point(335, 251);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(128, 60);
             this.btnlogin.TabIndex = 5;
@@ -107,6 +107,7 @@
             this.Controls.Add(this.label1);
             this.Name = "login";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

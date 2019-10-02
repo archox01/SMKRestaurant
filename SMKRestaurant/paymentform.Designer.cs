@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmborderid = new System.Windows.Forms.ComboBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmqty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmprice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +44,7 @@
             this.txtcard = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lbltotal = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,19 +75,19 @@
             this.cmborderid.Size = new System.Drawing.Size(300, 28);
             this.cmborderid.TabIndex = 2;
             // 
-            // dataGridView2
+            // dgrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.clmqty,
             this.clmprice2,
             this.clmtotal});
-            this.dataGridView2.Location = new System.Drawing.Point(33, 139);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(686, 241);
-            this.dataGridView2.TabIndex = 10;
+            this.dgrid.Location = new System.Drawing.Point(33, 138);
+            this.dgrid.Name = "dgrid";
+            this.dgrid.RowTemplate.Height = 28;
+            this.dgrid.Size = new System.Drawing.Size(686, 242);
+            this.dgrid.TabIndex = 10;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -202,13 +202,14 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dgrid);
             this.Controls.Add(this.cmborderid);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "paymentform";
             this.Text = "paymentform";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.Load += new System.EventHandler(this.paymentform_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,7 +220,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmborderid;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmqty;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmprice2;

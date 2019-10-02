@@ -31,10 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dgatas = new System.Windows.Forms.DataGridView();
+            this.cmenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.path = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.smknusBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.smknus = new SMKRestaurant.smknus();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbfood = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtmname = new System.Windows.Forms.TextBox();
@@ -47,13 +52,12 @@
             this.clmtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnadd = new System.Windows.Forms.Button();
             this.btndel = new System.Windows.Forms.Button();
-            this.cmenu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnprocess = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgatas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smknusBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smknus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgbawah)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(300, 18);
+            this.label1.Location = new System.Drawing.Point(429, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 29);
             this.label1.TabIndex = 0;
@@ -69,22 +73,63 @@
             // 
             // dgatas
             // 
+            this.dgatas.AllowUserToAddRows = false;
+            this.dgatas.AllowUserToDeleteRows = false;
             this.dgatas.AutoGenerateColumns = false;
             this.dgatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgatas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cmenu,
+            this.cprice,
             this.quantity,
-            this.cprice});
+            this.path,
+            this.photo});
             this.dgatas.DataSource = this.smknusBindingSource;
             this.dgatas.Location = new System.Drawing.Point(39, 50);
             this.dgatas.MultiSelect = false;
             this.dgatas.Name = "dgatas";
             this.dgatas.ReadOnly = true;
             this.dgatas.RowTemplate.Height = 28;
+            this.dgatas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgatas.Size = new System.Drawing.Size(906, 260);
             this.dgatas.TabIndex = 1;
-            this.dgatas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dgatas.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgatas_CellEnter);
+            this.dgatas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgatas_CellClick);
+            // 
+            // cmenu
+            // 
+            this.cmenu.DataPropertyName = "name";
+            this.cmenu.HeaderText = "Menu";
+            this.cmenu.Name = "cmenu";
+            this.cmenu.ReadOnly = true;
+            // 
+            // cprice
+            // 
+            this.cprice.DataPropertyName = "price";
+            this.cprice.HeaderText = "Price";
+            this.cprice.Name = "cprice";
+            this.cprice.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "qty";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Visible = false;
+            // 
+            // path
+            // 
+            this.path.DataPropertyName = "path";
+            this.path.HeaderText = "path";
+            this.path.Name = "path";
+            this.path.ReadOnly = true;
+            this.path.Visible = false;
+            // 
+            // photo
+            // 
+            this.photo.DataPropertyName = "photo";
+            this.photo.HeaderText = "photo";
+            this.photo.Name = "photo";
+            this.photo.ReadOnly = true;
+            this.photo.Visible = false;
             // 
             // smknusBindingSource
             // 
@@ -106,13 +151,14 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Menu Name";
             // 
-            // pictureBox1
+            // pbfood
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(39, 316);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(336, 224);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.pbfood.Location = new System.Drawing.Point(39, 316);
+            this.pbfood.Name = "pbfood";
+            this.pbfood.Size = new System.Drawing.Size(336, 224);
+            this.pbfood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbfood.TabIndex = 3;
+            this.pbfood.TabStop = false;
             // 
             // label3
             // 
@@ -137,7 +183,6 @@
             // txtmname
             // 
             this.txtmname.Location = new System.Drawing.Point(589, 344);
-            this.txtmname.Multiline = true;
             this.txtmname.Name = "txtmname";
             this.txtmname.Size = new System.Drawing.Size(177, 26);
             this.txtmname.TabIndex = 6;
@@ -145,7 +190,6 @@
             // txtqty
             // 
             this.txtqty.Location = new System.Drawing.Point(589, 387);
-            this.txtqty.Multiline = true;
             this.txtqty.Name = "txtqty";
             this.txtqty.Size = new System.Drawing.Size(177, 26);
             this.txtqty.TabIndex = 7;
@@ -153,13 +197,13 @@
             // txtprice
             // 
             this.txtprice.Location = new System.Drawing.Point(589, 432);
-            this.txtprice.Multiline = true;
             this.txtprice.Name = "txtprice";
             this.txtprice.Size = new System.Drawing.Size(177, 26);
             this.txtprice.TabIndex = 8;
             // 
             // dgbawah
             // 
+            this.dgbawah.AllowUserToDeleteRows = false;
             this.dgbawah.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgbawah.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -201,6 +245,7 @@
             this.btnadd.TabIndex = 10;
             this.btnadd.Text = "ADD";
             this.btnadd.UseVisualStyleBackColor = true;
+            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
             // btndel
             // 
@@ -211,32 +256,32 @@
             this.btndel.Text = "DELETE";
             this.btndel.UseVisualStyleBackColor = true;
             // 
-            // cmenu
+            // btnprocess
             // 
-            this.cmenu.DataPropertyName = "name";
-            this.cmenu.HeaderText = "Menu";
-            this.cmenu.Name = "cmenu";
-            this.cmenu.ReadOnly = true;
+            this.btnprocess.Location = new System.Drawing.Point(382, 824);
+            this.btnprocess.Name = "btnprocess";
+            this.btnprocess.Size = new System.Drawing.Size(172, 49);
+            this.btnprocess.TabIndex = 12;
+            this.btnprocess.Text = "PROCESS ORDER";
+            this.btnprocess.UseVisualStyleBackColor = true;
+            this.btnprocess.Click += new System.EventHandler(this.btnprocess_Click);
             // 
-            // quantity
+            // label5
             // 
-            this.quantity.HeaderText = "qty";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Visible = false;
-            // 
-            // cprice
-            // 
-            this.cprice.DataPropertyName = "price";
-            this.cprice.HeaderText = "Price";
-            this.cprice.Name = "cprice";
-            this.cprice.ReadOnly = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(682, 824);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Total";
             // 
             // orderform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 830);
+            this.ClientSize = new System.Drawing.Size(1005, 911);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnprocess);
             this.Controls.Add(this.btndel);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.dgbawah);
@@ -245,7 +290,7 @@
             this.Controls.Add(this.txtmname);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbfood);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgatas);
             this.Controls.Add(this.label1);
@@ -255,7 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgatas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.smknusBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.smknus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgbawah)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -267,7 +312,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgatas;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbfood;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtmname;
@@ -283,7 +328,11 @@
         private System.Windows.Forms.BindingSource smknusBindingSource;
         private smknus smknus;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn cprice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn path;
+        private System.Windows.Forms.DataGridViewTextBoxColumn photo;
+        private System.Windows.Forms.Button btnprocess;
+        private System.Windows.Forms.Label label5;
     }
 }

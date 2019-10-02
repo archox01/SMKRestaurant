@@ -30,7 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtmenuid = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgrid = new System.Windows.Forms.DataGridView();
+            this.menuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,11 +48,7 @@
             this.pbfood = new System.Windows.Forms.PictureBox();
             this.btnsearch = new System.Windows.Forms.Button();
             this.txtpath = new System.Windows.Forms.TextBox();
-            this.menuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfood)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,22 +69,54 @@
             this.txtmenuid.Size = new System.Drawing.Size(154, 26);
             this.txtmenuid.TabIndex = 1;
             // 
-            // dataGridView1
+            // dgrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.menuid,
             this.clmname,
             this.clmprice,
             this.Photo});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(683, 602);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgrid.Location = new System.Drawing.Point(12, 12);
+            this.dgrid.MultiSelect = false;
+            this.dgrid.Name = "dgrid";
+            this.dgrid.ReadOnly = true;
+            this.dgrid.RowTemplate.Height = 28;
+            this.dgrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgrid.Size = new System.Drawing.Size(683, 602);
+            this.dgrid.TabIndex = 2;
+            this.dgrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_CellClick);
+            this.dgrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgrid_KeyDown);
+            this.dgrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgrid_KeyUp);
+            // 
+            // menuid
+            // 
+            this.menuid.DataPropertyName = "menuid";
+            this.menuid.HeaderText = "MenuId";
+            this.menuid.Name = "menuid";
+            this.menuid.ReadOnly = true;
+            // 
+            // clmname
+            // 
+            this.clmname.DataPropertyName = "name";
+            this.clmname.HeaderText = "Name";
+            this.clmname.Name = "clmname";
+            this.clmname.ReadOnly = true;
+            // 
+            // clmprice
+            // 
+            this.clmprice.DataPropertyName = "price";
+            this.clmprice.HeaderText = "Price";
+            this.clmprice.Name = "clmprice";
+            this.clmprice.ReadOnly = true;
+            // 
+            // Photo
+            // 
+            this.Photo.DataPropertyName = "photo";
+            this.Photo.HeaderText = "photo";
+            this.Photo.Name = "Photo";
+            this.Photo.ReadOnly = true;
+            this.Photo.Visible = false;
             // 
             // label2
             // 
@@ -208,35 +240,6 @@
             this.txtpath.Size = new System.Drawing.Size(154, 26);
             this.txtpath.TabIndex = 17;
             // 
-            // menuid
-            // 
-            this.menuid.DataPropertyName = "menuid";
-            this.menuid.HeaderText = "MenuId";
-            this.menuid.Name = "menuid";
-            this.menuid.ReadOnly = true;
-            // 
-            // clmname
-            // 
-            this.clmname.DataPropertyName = "name";
-            this.clmname.HeaderText = "Name";
-            this.clmname.Name = "clmname";
-            this.clmname.ReadOnly = true;
-            // 
-            // clmprice
-            // 
-            this.clmprice.DataPropertyName = "price";
-            this.clmprice.HeaderText = "Price";
-            this.clmprice.Name = "clmprice";
-            this.clmprice.ReadOnly = true;
-            // 
-            // Photo
-            // 
-            this.Photo.DataPropertyName = "photo";
-            this.Photo.HeaderText = "photo";
-            this.Photo.Name = "Photo";
-            this.Photo.ReadOnly = true;
-            this.Photo.Visible = false;
-            // 
             // ManageMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -255,13 +258,13 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgrid);
             this.Controls.Add(this.txtmenuid);
             this.Controls.Add(this.label1);
             this.Name = "ManageMenu";
             this.Text = "Manage Menu ";
             this.Load += new System.EventHandler(this.ManageMenu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfood)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -272,7 +275,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtmenuid;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgrid;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

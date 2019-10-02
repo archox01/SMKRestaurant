@@ -53,7 +53,7 @@ namespace SMKRestaurant
                 MessageBox.Show("PASSWORD WAJIB DIISI");
             }
 
-            if ( txtemail.Text != null && tpassword.Text != null) {
+            else if ( txtemail.Text != null && tpassword.Text != null) {
                 try
                 {
                     koneksikuDataContext dbku = new koneksikuDataContext();
@@ -62,31 +62,38 @@ namespace SMKRestaurant
                     password = auth.password;
                     if (txtemail.Text == auth.email && tpassword.Text ==auth.password)
                     {
+                        position = auth.position;
                         if (auth.password == tpassword.Text && auth.position == "admin")
                         {
                             AdmNav adm = new AdmNav();
                             adm.Show();
                             this.Hide();
+                            //MessageBox.Show("Login Sukses, Anda Masuk Sebagai  " + position);
+
                         }
-                        if (auth.password == tpassword.Text && auth.position == "chef")
+                        else if (auth.password == tpassword.Text && auth.position == "chef")
                         {
                             chefnav chf = new chefnav();
                             chf.Show();
                             this.Hide();
+                            //MessageBox.Show("Login Sukses, Anda Masuk Sebagai  " + position);
+
                         }
-                        if (auth.password == tpassword.Text && auth.position == "cashier")
+                        else  if (auth.password == tpassword.Text && auth.position == "cashier")
                         {
                             cashiernav chn = new cashiernav();
                             chn.Show();
                             this.Hide();
-                            position = auth.position;
+
+
 
                         }
                     }
                     MessageBox.Show("Login Sukses, Anda Masuk Sebagai  " + position);
 
+
                 }
-                catch (Exception a)
+                catch (Exception )
                 {
                         MessageBox.Show("Email Atau password yang anda masukkan salah", "Peringatan!!");
                     
@@ -110,6 +117,11 @@ namespace SMKRestaurant
         }
 
         private void txtemail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void login_Load(object sender, EventArgs e)
         {
 
         }

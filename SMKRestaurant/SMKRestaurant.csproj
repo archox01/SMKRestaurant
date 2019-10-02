@@ -71,7 +71,6 @@
     <Compile Include="chefnav.Designer.cs">
       <DependentUpon>chefnav.cs</DependentUpon>
     </Compile>
-    <Compile Include="imgc.cs" />
     <Compile Include="koneksiku.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -36,7 +36,6 @@ namespace SMKRestaurant
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string pass, pass1, pass2;
             msmenu sm = new msmenu();
             var userpass = (from u in dbku.msemployees where u.password == txtoldpass.Text select u).First();
 

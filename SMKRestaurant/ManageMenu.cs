@@ -15,7 +15,6 @@ namespace SMKRestaurant
     public partial class ManageMenu : Form
     {
         string filename;
-        List<msmenu> list;
         public ManageMenu()
         {
             InitializeComponent();
@@ -44,7 +43,6 @@ namespace SMKRestaurant
 
         private void btninsert_Click(object sender, EventArgs e)
         {
-            imgc img1 = new imgc();
             OpenFileDialog ofp = new OpenFileDialog();
             byte[] fileb = imgtoarray(pbfood.Image);
             System.Data.Linq.Binary filebi = new System.Data.Linq.Binary(fileb);
@@ -67,7 +65,7 @@ namespace SMKRestaurant
             MessageBox.Show("Successfull");
 
             this.bind();
-            dataGridView1.Refresh();
+            dgrid.Refresh();
 
 
         }
@@ -92,25 +90,14 @@ namespace SMKRestaurant
         private void bind()
         {
             var st = from s in dbku.msmenus select s;
-            dataGridView1.DataSource = st;
+            dgrid.DataSource = st;
 
         }
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            if (e.RowIndex > 0)
-            {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                txtmenuid.Text = row.Cells["menuid"].Value.ToString();
-                var data = (from g in dbku.msmenus where g.menuid == int.Parse(txtmenuid.Text) select g).First();
-                txtmenun.Text = data.name;
-                txtprice.Text = data.price.ToString();
 
-                pbfood.Image = arraytoimg(data.photo.ToArray());
-
-            }
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
@@ -151,10 +138,67 @@ namespace SMKRestaurant
                 this.bind();
                 MessageBox.Show("Data Berhasil Di hapus", "Sukses !! ");
             }
-            catch(Exception s)
+            catch(Exception )
             {
                 MessageBox.Show("Masukkan ID data yang ingin di hapus");
             }
+        }
+        private void bawahkey()
+        {
+            
+
+            txtmenuid.Text = dgrid.SelectedCells[0].Value.ToString();
+            txtmenun.Text = dgrid.SelectedCells[1].Value.ToString();
+            txtprice.Text = dgrid.SelectedCells[2].Value.ToString();
+            txtpath.Text = dgrid.SelectedCells[3].Value.ToString();
+            txtpath.Text = dgrid.SelectedCells[4].Value.ToString();
+
+            var st = (from s in dbku.msmenus where s.menuid == int.Parse(txtmenuid.Text) select s).First();
+
+            pbfood.Image = arraytoimg(st.photo.ToArray());
+        }
+
+        private void operdata()
+        {
+            
+            
+            txtmenuid.Text = dgrid.SelectedCells[0].Value.ToString();
+            txtmenun.Text = dgrid.SelectedCells[1].Value.ToString();
+            txtprice.Text = dgrid.SelectedCells[2].Value.ToString();
+            txtpath.Text = dgrid.SelectedCells[3].Value.ToString();
+            txtpath.Text = dgrid.SelectedCells[4].Value.ToString();
+
+            var st = (from s in dbku.msmenus where s.menuid == int.Parse(txtmenuid.Text) select s).First();
+
+            pbfood.Image = arraytoimg(st.photo.ToArray());
+
+        }
+
+        private void dgrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            operdata();
+        }
+
+        private void dgrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                operdata();
+            }
+
+            else if (e.KeyCode == Keys.Down)
+            {
+                bawahkey();
+                
+                
+            }
+            
+            
+        }
+
+        private void dgrid_KeyUp(object sender, KeyEventArgs e)
+        {
+             
         }
     }
 }
