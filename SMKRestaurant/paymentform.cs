@@ -13,7 +13,7 @@ namespace SMKRestaurant
     public partial class paymentform : Form
     {
 
-        orderform of = new orderform();
+       
         public DataTable aDT;
        
         public paymentform(orderform f2)

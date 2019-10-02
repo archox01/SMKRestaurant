@@ -14,18 +14,30 @@ namespace SMKRestaurant
 {
     public partial class orderform : Form
     {
+         public DataTable datable;
+
+        public DataTable dt3
+        {
+            get { return datable; }
+        }
+
         public orderform()
         {
-            
+            datable = dt2.Copy();
             InitializeComponent();
             dgbawah.AutoGenerateColumns = false;
+            
         }
         koneksikuDataContext dbku = new koneksikuDataContext();
         msmenu msmenus = new msmenu();
         msmember msmembers = new msmember();
 
-        
+        public DataTable  getData
+        {
+            get { return datable; }
+        }
 
+        DataTable dt2 = new DataTable();
         private void load()
         {
             var st = (from s in dbku.msmenus select s);
@@ -58,12 +70,12 @@ namespace SMKRestaurant
 
         
 
-        private void tempgrid2()
+        public DataTable  tempgrid2()
         {
             int price = int.Parse(txtprice.Text);
             int quantity = int.Parse(txtqty.Text);
             int total = price * quantity;
-            DataTable dt2 = new DataTable();
+            
             dt2.Columns.Add("Menu");
             dt2.Columns.Add("Quantity");
             dt2.Columns.Add("Price");
@@ -85,9 +97,9 @@ namespace SMKRestaurant
                 dgbawah.Rows[tambah].Cells[2].Value = row2["Price"].ToString();
                 dgbawah.Rows[tambah].Cells[3].Value = row2["Total"].ToString();
             }
-            
+            return dt2;
+
            
-            
         }
         
 
